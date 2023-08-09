@@ -6,24 +6,31 @@ import {
   View,
   Image,
   TouchableOpacity,
-} from 'react-native';import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import {decreaseQty, increaseQty } from '../redux/slices/ProductSlice';
-import { addToCart, deleteMyCartItem, removeFromCart } from '../redux/slices/CartSlice';
+  Alert,
+} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {decreaseQty, increaseQty} from '../redux/slices/ProductSlice';
+import {
+  addToCart,
+  deleteMyCartItem,
+  removeFromCart,
+} from '../redux/slices/CartSlice';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
-  const myCart = useSelector((state)=>state.cart)
-  const cartTotal = ()=>{
+  const myCart = useSelector(state => state.cart);
+  const cartTotal = () => {
     let total = 0;
-    myCart.map((item,index)=>{
-     total = total + item.price * item.qty
-    })
+    myCart.map((item, index) => {
+      total = total + item.price * item.qty;
+    });
     return total;
- }
+  };
+
   return (
     <View style={[styles.container, {backgroundColor: 'white'}]}>
-    <View style={styles.header}>
+      <View style={styles.header}>
       <View>
         <Text
           style={{
@@ -71,11 +78,11 @@ const CartScreen = () => {
           </View>
         </View>
     </View>
-  </View>
-  )
-}
+    </View>
+  );
+};
 
-export default CartScreen
+export default CartScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -115,4 +122,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
   },
-})
+});
