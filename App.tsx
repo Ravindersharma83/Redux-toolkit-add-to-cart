@@ -8,6 +8,7 @@ import CartScreen from './src/screens/CartScreen';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
 import HomeScreen from './src/screens/HomeScreen';
+import CheckoutScreen from './src/screens/CheckoutScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ const App = () => {
         <Stack.Screen name="Home" component={ProductScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
         <Stack.Screen name="Checkout" component={HomeScreen} />
+        <Stack.Screen name="Checkout2" component={CheckoutScreen} />
       </Stack.Navigator>
       </NavigationContainer>
     </Provider>

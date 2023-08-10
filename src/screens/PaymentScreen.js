@@ -20,7 +20,7 @@ const PaymentScreen = ({totalAmount}) => {
     const onDone = async() => {
         console.log('my card details',cardInfo);
         let apiData = {
-            amount:totalAmount,
+            amount:Math.round(totalAmount * 100),
             currency:'INR'
         }
         try {

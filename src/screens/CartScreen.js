@@ -72,8 +72,13 @@ const CartScreen = ({navigation}) => {
               <Text style={{fontSize:16,fontWeight:'700',color:'#000'}}>{`Total - $ ${cartTotal()}`}</Text>
           </View>
           <View style={{width:'50%',justifyContent:'center',alignItems:'center',height:'100%'}}>
-              <TouchableOpacity style={{width:'50%',height:45,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:7}} onPress={() => navigation.navigate('Checkout',{totalAmount:cartTotal()})}>
+
+              <TouchableOpacity style={{width:'50%',height:45,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:7,marginBottom:5}} onPress={() => navigation.navigate('Checkout',{totalAmount:cartTotal()})}>
                   <Text style={{color:'#fff'}}>Checkout</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{width:'50%',height:45,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:7,marginBottom:30}} onPress={() => navigation.navigate('Checkout2',{totalAmount:cartTotal()})}>
+                  <Text style={{color:'#fff'}}>Checkout 2</Text>
               </TouchableOpacity>
           </View>
         </View>
