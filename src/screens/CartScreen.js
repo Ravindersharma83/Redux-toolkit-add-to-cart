@@ -17,7 +17,7 @@ import {
   removeFromCart,
 } from '../redux/slices/CartSlice';
 
-const CartScreen = () => {
+const CartScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const myCart = useSelector(state => state.cart);
   const cartTotal = () => {
@@ -72,7 +72,7 @@ const CartScreen = () => {
               <Text style={{fontSize:16,fontWeight:'700',color:'#000'}}>{`Total - $ ${cartTotal()}`}</Text>
           </View>
           <View style={{width:'50%',justifyContent:'center',alignItems:'center',height:'100%'}}>
-              <TouchableOpacity style={{width:'50%',height:45,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:7}} onPress={() => navigation.navigate('Cart')}>
+              <TouchableOpacity style={{width:'50%',height:45,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:7}} onPress={() => navigation.navigate('Checkout',{totalAmount:cartTotal()})}>
                   <Text style={{color:'#fff'}}>Checkout</Text>
               </TouchableOpacity>
           </View>

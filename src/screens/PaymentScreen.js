@@ -1,9 +1,9 @@
 import {Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, { useState } from 'react';
-import {CardField, useStripe, createToken, confirmPayment} from '@stripe/stripe-react-native';
+import {CardField, useStripe, createToken, confirmPayment, CardForm} from '@stripe/stripe-react-native';
 import createPaymentIntent from '../apis/stripeApis';
 
-const PaymentScreen = () => {
+const PaymentScreen = ({totalAmount}) => {
     const[cardInfo,setCardInfo] = useState(null);
     const[disabled,setDisabled] = useState(true);
     const fetchCardDetail = (cardDetail) => {
@@ -20,7 +20,7 @@ const PaymentScreen = () => {
     const onDone = async() => {
         console.log('my card details',cardInfo);
         let apiData = {
-            amount:500,
+            amount:totalAmount,
             currency:'INR'
         }
         try {
@@ -45,8 +45,8 @@ const PaymentScreen = () => {
         // }
     }
   return (
-    <View style={{flex:1}}>
-        <SafeAreaView style={{flex:1}}>
+    <View>
+        <SafeAreaView>
             <CardField
             postalCodeEnabled={false}
             placeholders={{
@@ -69,6 +69,8 @@ const PaymentScreen = () => {
                 console.log('focusField', focusedField);
             }}
             />
+            {/* <CardField style={styles.cardField} />
+            <CardForm style={styles.CardForm} /> */}
         <TouchableOpacity style={{backgroundColor:disabled ? 'gray' : 'red',padding:10}} onPress={onDone} disabled={disabled}>
             <Text style={{color:'white',textAlign:'center'}}>Pay now</Text>
         </TouchableOpacity>
@@ -79,4 +81,14 @@ const PaymentScreen = () => {
 
 export default PaymentScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    cardField:{
+        height:35,
+        width:'90%',
+        marginBottom:30
+    },
+    CardForm:{
+        height:170,
+        width:'90%'
+    }
+});
